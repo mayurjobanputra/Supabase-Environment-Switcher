@@ -73,13 +73,13 @@ jobs:
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-white p-8">
-      <div className="max-w-6xl mx-auto space-y-8">
+    <div className="min-h-screen bg-background text-foreground">
+      <div className="max-w-6xl mx-auto space-y-8 p-8">
         <div className="text-center space-y-4">
           <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-400">
             Supabase Environment Switcher
           </h1>
-          <p className="text-gray-200 max-w-2xl mx-auto">
+          <p className="text-foreground/80 max-w-2xl mx-auto">
             Generate a GitHub Actions workflow that automatically switches between development
             and production Supabase environments during pull requests.{' '}
             <a href="#how-it-works" onClick={scrollToHowItWorks} className="text-blue-400 hover:text-blue-300 underline">
@@ -90,7 +90,7 @@ jobs:
 
         <div className="grid md:grid-cols-2 gap-8">
           <div>
-            <h2 className="text-xl font-semibold mb-4 text-white">Configuration</h2>
+            <h2 className="text-xl font-semibold mb-4 text-foreground">Configuration</h2>
             <WorkflowForm
               devSupabase={devSupabase}
               setDevSupabase={setDevSupabase}
@@ -116,8 +116,8 @@ jobs:
           </div>
 
           <div>
-            <h2 className="text-xl font-semibold mb-4 text-white">Generated Workflow</h2>
-            <p className="text-gray-300 mb-4">
+            <h2 className="text-xl font-semibold mb-4 text-foreground">Generated Workflow</h2>
+            <p className="text-foreground/80 mb-4">
               The workflow below is generated entirely in your browser using JavaScript - no server calls are made and your credentials never leave your device.
             </p>
             {isFormEmpty() ? (
@@ -133,9 +133,10 @@ jobs:
           </div>
         </div>
 
-        <div className="mt-16 space-y-8 text-gray-200">
-          <div id="how-it-works" className="bg-gray-800/50 rounded-lg p-8 space-y-4">
-            <h2 className="text-2xl font-semibold text-white">How It Works</h2>
+        <div className="mt-16 space-y-8">
+          <div id="how-it-works" className="bg-card rounded-lg p-8 space-y-4">
+            <h2 className="text-2xl font-semibold text-foreground">How It Works</h2>
+            <div className="space-y-4 text-foreground/80">
             <div className="space-y-4">
               <p>
                 This tool generates a GitHub Actions workflow that automatically handles the switching between your development and production Supabase environments when creating pull requests.
