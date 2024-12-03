@@ -29,7 +29,7 @@ export const EnvironmentSection: React.FC<EnvironmentSectionProps> = ({
 
   return (
     <div className="space-y-4">
-      <h3 className="text-lg font-semibold text-white border-b border-gray-700 pb-2">{title}</h3>
+      <h3 className="text-lg font-semibold text-foreground border-b border-input dark:border-gray-700 pb-2">{title}</h3>
       
       <FormField
         label="Supabase URL"
