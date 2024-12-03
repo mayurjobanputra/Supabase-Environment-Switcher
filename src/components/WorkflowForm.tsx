@@ -44,6 +44,22 @@ const WorkflowForm: React.FC<WorkflowFormProps> = ({
     return pattern.test(url);
   };
 
+  const validateBranchName = (branch: string) => {
+    // Check for invalid patterns
+    const invalidPatterns = [
+      /\s/,          // No spaces
+      /\.\./,        // No consecutive dots
+      /^\./,         // Cannot start with a dot
+      /\.$/,         // Cannot end with a dot
+      /^\//,         // Cannot start with slash
+      /\/$/,         // Cannot end with slash
+      /[~^:?*\[\]\\]/,  // Cannot contain special characters
+      /@{/,          // Cannot contain @{
+    ];
+
+    return !invalidPatterns.some(pattern => pattern.test(branch));
+  };
+
   const handleDevSupabaseChange = (value: string) => {
     setDevSupabase(value);
   };
@@ -54,6 +70,8 @@ const WorkflowForm: React.FC<WorkflowFormProps> = ({
 
   const isDevUrlValid = !devSupabase || validateSupabaseUrl(devSupabase);
   const isProdUrlValid = !prodSupabase || validateSupabaseUrl(prodSupabase);
+  const isDevBranchValid = !devBranch || validateBranchName(devBranch);
+  const isProdBranchValid = !prodBranch || validateBranchName(prodBranch);
 
   return (
     <Card className="p-6 space-y-8 animate-fade-in bg-gray-800/50 border-gray-700">
@@ -77,12 +95,15 @@ const WorkflowForm: React.FC<WorkflowFormProps> = ({
 
         <div className="space-y-2">
           <Label htmlFor="devBranch" className="text-gray-200">Branch Name</Label>
+          {!isDevBranchValid && devBranch && (
+            <p className="text-red-500 text-sm mt-1">Invalid branch name. Branch names cannot contain spaces, special characters, or start/end with dots or slashes.</p>
+          )}
           <Input
             id="devBranch"
             placeholder="e.g., development"
             value={devBranch}
             onChange={(e) => setDevBranch(e.target.value)}
-            className="bg-gray-900 border-gray-600 text-white placeholder:text-gray-400"
+            className={`bg-gray-900 border-gray-600 text-white placeholder:text-gray-400 ${!isDevBranchValid ? 'border-red-500 focus-visible:ring-red-500' : ''}`}
           />
         </div>
 
@@ -130,12 +151,15 @@ const WorkflowForm: React.FC<WorkflowFormProps> = ({
 
         <div className="space-y-2">
           <Label htmlFor="prodBranch" className="text-gray-200">Branch Name</Label>
+          {!isProdBranchValid && prodBranch && (
+            <p className="text-red-500 text-sm mt-1">Invalid branch name. Branch names cannot contain spaces, special characters, or start/end with dots or slashes.</p>
+          )}
           <Input
             id="prodBranch"
             placeholder="e.g., main"
             value={prodBranch}
             onChange={(e) => setProdBranch(e.target.value)}
-            className="bg-gray-900 border-gray-600 text-white placeholder:text-gray-400"
+            className={`bg-gray-900 border-gray-600 text-white placeholder:text-gray-400 ${!isProdBranchValid ? 'border-red-500 focus-visible:ring-red-500' : ''}`}
           />
         </div>
 
