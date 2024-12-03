@@ -17,16 +17,16 @@ const CodePreview: React.FC<CodePreviewProps> = ({ code }) => {
   };
 
   return (
-    <div className="relative rounded-lg bg-editor-bg p-4 animate-fade-in">
+    <div className="relative rounded-lg bg-white dark:bg-editor-bg p-4 animate-fade-in border border-input">
       <Button
         variant="outline"
         size="icon"
-        className="absolute top-4 right-4 text-white hover:bg-gray-700"
+        className="absolute top-4 right-4 text-foreground hover:bg-accent"
         onClick={handleCopy}
       >
         <Copy className="h-4 w-4" />
       </Button>
-      <pre className="font-mono text-sm text-white overflow-x-auto">
+      <pre className="font-mono text-sm text-foreground dark:text-white overflow-x-auto">
         <code>{code}</code>
       </pre>
     </div>
