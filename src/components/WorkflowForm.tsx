@@ -2,7 +2,7 @@ import React from 'react';
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card } from "@/components/ui/card";
-import { QuestionMarkCircle } from "lucide-react";
+import { HelpCircle } from "lucide-react";
 import {
   Tooltip,
   TooltipContent,
@@ -92,7 +92,7 @@ const WorkflowForm: React.FC<WorkflowFormProps> = ({
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger>
-                  <QuestionMarkCircle className="h-4 w-4 text-gray-400" />
+                  <HelpCircle className="h-4 w-4 text-gray-400" />
                 </TooltipTrigger>
                 <TooltipContent>
                   <p>Your anon key is completely safe - this form doesn't save anything to a server</p>
@@ -142,7 +142,7 @@ const WorkflowForm: React.FC<WorkflowFormProps> = ({
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger>
-                  <QuestionMarkCircle className="h-4 w-4 text-gray-400" />
+                  <HelpCircle className="h-4 w-4 text-gray-400" />
                 </TooltipTrigger>
                 <TooltipContent>
                   <p>Your anon key is completely safe - this form doesn't save anything to a server</p>
