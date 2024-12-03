@@ -9,7 +9,15 @@ const Index = () => {
   const [devBranch, setDevBranch] = useState('development');
   const [prodBranch, setProdBranch] = useState('main');
 
+  const extractProjectId = (url: string) => {
+    const match = url.match(/https:\/\/(.*?)\.supabase\.co/);
+    return match ? match[1] : '';
+  };
+
   const generateWorkflow = () => {
+    const devProjectId = extractProjectId(devSupabase);
+    const prodProjectId = extractProjectId(prodSupabase);
+
     return `name: Replace Supabase URL
 
 on:
@@ -24,13 +32,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Replace Supabase URL
+      - name: Replace Supabase URLs and Project IDs
         run: |
           # Specify the files to search and replace in
           find ./ -type f -name "*.js" -o -name "*.ts" -o -name "*.env" | while read -r file; do
+            # Replace full URLs
             sed -i 's|${devSupabase}|${prodSupabase}|g' "$file"
+            # Replace project IDs
+            sed -i 's|${devProjectId}|${prodProjectId}|g' "$file"
           done`;
-
   };
 
   return (
