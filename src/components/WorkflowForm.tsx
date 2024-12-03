@@ -63,6 +63,9 @@ const WorkflowForm: React.FC<WorkflowFormProps> = ({
         
         <div className="space-y-2">
           <Label htmlFor="devSupabase" className="text-gray-200">Supabase URL</Label>
+          {!isDevUrlValid && devSupabase && (
+            <p className="text-red-500 text-sm mt-1">URL must be in format: https://your-project.supabase.co</p>
+          )}
           <Input
             id="devSupabase"
             placeholder="https://your-dev-project.supabase.co"
@@ -113,6 +116,9 @@ const WorkflowForm: React.FC<WorkflowFormProps> = ({
         
         <div className="space-y-2">
           <Label htmlFor="prodSupabase" className="text-gray-200">Supabase URL</Label>
+          {!isProdUrlValid && prodSupabase && (
+            <p className="text-red-500 text-sm mt-1">URL must be in format: https://your-project.supabase.co</p>
+          )}
           <Input
             id="prodSupabase"
             placeholder="https://your-prod-project.supabase.co"
