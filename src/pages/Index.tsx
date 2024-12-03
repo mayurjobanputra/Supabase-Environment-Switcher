@@ -8,6 +8,8 @@ const Index = () => {
   const [prodSupabase, setProdSupabase] = useState('');
   const [devBranch, setDevBranch] = useState('development');
   const [prodBranch, setProdBranch] = useState('main');
+  const [devAnonKey, setDevAnonKey] = useState('');
+  const [prodAnonKey, setProdAnonKey] = useState('');
 
   const extractProjectId = (url: string) => {
     const match = url.match(/https:\/\/(.*?)\.supabase\.co/);
@@ -40,6 +42,8 @@ jobs:
             sed -i 's|${devSupabase}|${prodSupabase}|g' "$file"
             # Replace project IDs
             sed -i 's|${devProjectId}|${prodProjectId}|g' "$file"
+            # Replace anon keys
+            sed -i 's|${devAnonKey}|${prodAnonKey}|g' "$file"
           done`;
   };
 
@@ -68,6 +72,10 @@ jobs:
               setDevBranch={setDevBranch}
               prodBranch={prodBranch}
               setProdBranch={setProdBranch}
+              devAnonKey={devAnonKey}
+              setDevAnonKey={setDevAnonKey}
+              prodAnonKey={prodAnonKey}
+              setProdAnonKey={setProdAnonKey}
             />
             <div className="mt-4">
               <Button 

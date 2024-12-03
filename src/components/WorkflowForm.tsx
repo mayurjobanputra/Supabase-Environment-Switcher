@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card } from "@/components/ui/card";
@@ -12,6 +12,10 @@ interface WorkflowFormProps {
   setDevBranch: (value: string) => void;
   prodBranch: string;
   setProdBranch: (value: string) => void;
+  devAnonKey: string;
+  setDevAnonKey: (value: string) => void;
+  prodAnonKey: string;
+  setProdAnonKey: (value: string) => void;
 }
 
 const WorkflowForm: React.FC<WorkflowFormProps> = ({
@@ -23,6 +27,10 @@ const WorkflowForm: React.FC<WorkflowFormProps> = ({
   setDevBranch,
   prodBranch,
   setProdBranch,
+  devAnonKey,
+  setDevAnonKey,
+  prodAnonKey,
+  setProdAnonKey,
 }) => {
   const extractProjectId = (url: string) => {
     const match = url.match(/https:\/\/(.*?)\.supabase\.co/);
@@ -111,6 +119,28 @@ const WorkflowForm: React.FC<WorkflowFormProps> = ({
           value={extractProjectId(prodSupabase)}
           readOnly
           className="bg-gray-800 border-gray-700 text-gray-300 mt-1"
+        />
+      </div>
+
+      <div className="space-y-2">
+        <Label htmlFor="devAnonKey" className="text-gray-200">Development Anon Key</Label>
+        <Input
+          id="devAnonKey"
+          placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+          value={devAnonKey}
+          onChange={(e) => setDevAnonKey(e.target.value)}
+          className="bg-gray-900 border-gray-600 text-white placeholder:text-gray-400 font-mono text-sm"
+        />
+      </div>
+
+      <div className="space-y-2">
+        <Label htmlFor="prodAnonKey" className="text-gray-200">Production Anon Key</Label>
+        <Input
+          id="prodAnonKey"
+          placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+          value={prodAnonKey}
+          onChange={(e) => setProdAnonKey(e.target.value)}
+          className="bg-gray-900 border-gray-600 text-white placeholder:text-gray-400 font-mono text-sm"
         />
       </div>
     </Card>
