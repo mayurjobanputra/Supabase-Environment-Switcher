@@ -29,15 +29,8 @@ jobs:
           # Specify the files to search and replace in
           find ./ -type f -name "*.js" -o -name "*.ts" -o -name "*.env" | while read -r file; do
             sed -i 's|${devSupabase}|${prodSupabase}|g' "$file"
-          done
+          done`;
 
-      - name: Commit changes
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add .
-          git commit -m "Replace dev Supabase URL with production URL" || echo "No changes to commit"
-          git push origin HEAD:\${{ github.head_ref }}`;
   };
 
   return (
