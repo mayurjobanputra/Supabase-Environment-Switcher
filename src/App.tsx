@@ -4,7 +4,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "next-themes";
-import { ThemeToggle } from "./components/ThemeToggle";
 import Index from "./pages/Index";
 
 const queryClient = new QueryClient();
@@ -13,7 +12,6 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       <TooltipProvider>
-        <ThemeToggle />
         <Toaster />
         <Sonner />
         <BrowserRouter>
