@@ -148,7 +148,7 @@ jobs:
             <h2 className="text-2xl font-semibold text-foreground">How It Works</h2>
             <div className="space-y-4 text-foreground/80">
               <p>
-                This tool generates a GitHub Actions workflow that automatically handles the switching between your development and production Supabase environments when creating pull requests.
+                This tool generates a GitHub Actions workflow that automatically handles the switching between your development and production Supabase environments when creating pull requests. Want to customize it further? <a href="https://github.com/mayurjobanputra/Supabase-Environment-Switcher" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 underline">Remix this project on GitHub</a>.
               </p>
               <p>
                 When you create a pull request from your development branch to your production branch, the generated workflow will:
