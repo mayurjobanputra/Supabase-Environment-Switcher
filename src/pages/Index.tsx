@@ -137,7 +137,6 @@ jobs:
           <div id="how-it-works" className="bg-card rounded-lg p-8 space-y-4">
             <h2 className="text-2xl font-semibold text-foreground">How It Works</h2>
             <div className="space-y-4 text-foreground/80">
-            <div className="space-y-4">
               <p>
                 This tool generates a GitHub Actions workflow that automatically handles the switching between your development and production Supabase environments when creating pull requests.
               </p>
