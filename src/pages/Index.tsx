@@ -2,6 +2,7 @@ import { useState } from 'react';
 import WorkflowForm from '@/components/WorkflowForm';
 import CodePreview from '@/components/CodePreview';
 import { Button } from '@/components/ui/button';
+import { validateSupabaseUrl, validateBranchName, validateAnonKey } from '@/utils/formValidation';
 
 const Index = () => {
   const [devSupabase, setDevSupabase] = useState('');
@@ -16,7 +17,22 @@ const Index = () => {
     return match ? match[1] : '';
   };
 
+  const hasValidationErrors = () => {
+    return (
+      !validateSupabaseUrl(devSupabase) ||
+      !validateSupabaseUrl(prodSupabase) ||
+      !validateBranchName(devBranch) ||
+      !validateBranchName(prodBranch) ||
+      !validateAnonKey(devAnonKey) ||
+      !validateAnonKey(prodAnonKey)
+    );
+  };
+
   const generateWorkflow = () => {
+    if (hasValidationErrors()) {
+      return '';
+    }
+
     const devProjectId = extractProjectId(devSupabase);
     const prodProjectId = extractProjectId(prodSupabase);
 
@@ -89,6 +105,11 @@ jobs:
 
           <div>
             <h2 className="text-xl font-semibold mb-4 text-white">Generated Workflow</h2>
+            {hasValidationErrors() && (
+              <div className="text-red-500 mb-4 p-4 border border-red-500 rounded bg-red-500/10">
+                Please fix the validation errors in the form before generating the workflow.
+              </div>
+            )}
             <CodePreview code={generateWorkflow()} />
           </div>
         </div>
