@@ -113,4 +113,4 @@ For questions, updates, or more tools, follow me on [Twitter](https://mayur.ca/x
 
 ---
 
-Made with ❤️ by Mayur
+Made with ❤️ by Mayur ([mayur.ca/x](https://mayur.ca/x))
