@@ -45,19 +45,23 @@ const WorkflowForm: React.FC<WorkflowFormProps> = ({
   };
 
   const validateBranchName = (branch: string) => {
-    // Check for invalid patterns
     const invalidPatterns = [
-      /\s/,          // No spaces
-      /\.\./,        // No consecutive dots
-      /^\./,         // Cannot start with a dot
-      /\.$/,         // Cannot end with a dot
-      /^\//,         // Cannot start with slash
-      /\/$/,         // Cannot end with slash
-      /[~^:?*\[\]\\]/,  // Cannot contain special characters
-      /@{/,          // Cannot contain @{
+      /\s/,          
+      /\.\./,        
+      /^\./,         
+      /\.$/,         
+      /^\//,         
+      /\/$/,         
+      /[~^:?*\[\]\\]/,  
+      /@{/,          
     ];
 
     return !invalidPatterns.some(pattern => pattern.test(branch));
+  };
+
+  const validateAnonKey = (key: string) => {
+    const pattern = /^eyJ[A-Za-z0-9-_=]+\.[A-Za-z0-9-_=]+\.?[A-Za-z0-9-_.+/=]*$/;
+    return !key || pattern.test(key);
   };
 
   const handleDevSupabaseChange = (value: string) => {
@@ -72,6 +76,8 @@ const WorkflowForm: React.FC<WorkflowFormProps> = ({
   const isProdUrlValid = !prodSupabase || validateSupabaseUrl(prodSupabase);
   const isDevBranchValid = !devBranch || validateBranchName(devBranch);
   const isProdBranchValid = !prodBranch || validateBranchName(prodBranch);
+  const isDevAnonKeyValid = validateAnonKey(devAnonKey);
+  const isProdAnonKeyValid = validateAnonKey(prodAnonKey);
 
   return (
     <Card className="p-6 space-y-8 animate-fade-in bg-gray-800/50 border-gray-700">
@@ -121,12 +127,15 @@ const WorkflowForm: React.FC<WorkflowFormProps> = ({
               </Tooltip>
             </TooltipProvider>
           </div>
+          {!isDevAnonKeyValid && devAnonKey && (
+            <p className="text-red-500 text-sm mt-1">Invalid anon key format. It should be a valid JWT token starting with "eyJ"</p>
+          )}
           <Input
             id="devAnonKey"
             placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
             value={devAnonKey}
             onChange={(e) => setDevAnonKey(e.target.value)}
-            className="bg-gray-900 border-gray-600 text-white placeholder:text-gray-400 font-mono text-sm"
+            className={`bg-gray-900 border-gray-600 text-white placeholder:text-gray-400 font-mono text-sm ${!isDevAnonKeyValid ? 'border-red-500 focus-visible:ring-red-500' : ''}`}
           />
         </div>
       </div>
@@ -177,12 +186,15 @@ const WorkflowForm: React.FC<WorkflowFormProps> = ({
               </Tooltip>
             </TooltipProvider>
           </div>
+          {!isProdAnonKeyValid && prodAnonKey && (
+            <p className="text-red-500 text-sm mt-1">Invalid anon key format. It should be a valid JWT token starting with "eyJ"</p>
+          )}
           <Input
             id="prodAnonKey"
             placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
             value={prodAnonKey}
             onChange={(e) => setProdAnonKey(e.target.value)}
-            className="bg-gray-900 border-gray-600 text-white placeholder:text-gray-400 font-mono text-sm"
+            className={`bg-gray-900 border-gray-600 text-white placeholder:text-gray-400 font-mono text-sm ${!isProdAnonKeyValid ? 'border-red-500 focus-visible:ring-red-500' : ''}`}
           />
         </div>
       </div>
