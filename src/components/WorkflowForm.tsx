@@ -2,6 +2,13 @@ import React from 'react';
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card } from "@/components/ui/card";
+import { QuestionMarkCircle } from "lucide-react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 interface WorkflowFormProps {
   devSupabase: string;
@@ -80,7 +87,19 @@ const WorkflowForm: React.FC<WorkflowFormProps> = ({
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="devAnonKey" className="text-gray-200">Anon Key</Label>
+          <div className="flex items-center gap-2">
+            <Label htmlFor="devAnonKey" className="text-gray-200">Anon Key</Label>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger>
+                  <QuestionMarkCircle className="h-4 w-4 text-gray-400" />
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Your anon key is completely safe - this form doesn't save anything to a server</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          </div>
           <Input
             id="devAnonKey"
             placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
@@ -118,7 +137,19 @@ const WorkflowForm: React.FC<WorkflowFormProps> = ({
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="prodAnonKey" className="text-gray-200">Anon Key</Label>
+          <div className="flex items-center gap-2">
+            <Label htmlFor="prodAnonKey" className="text-gray-200">Anon Key</Label>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger>
+                  <QuestionMarkCircle className="h-4 w-4 text-gray-400" />
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Your anon key is completely safe - this form doesn't save anything to a server</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          </div>
           <Input
             id="prodAnonKey"
             placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
