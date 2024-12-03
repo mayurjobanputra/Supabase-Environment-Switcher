@@ -1,69 +1,116 @@
-# Welcome to your Lovable project
+# Supabase Environment Switcher
 
-## Project info
+A tool that generates GitHub Actions workflows to automatically switch between development and production Supabase environments during pull requests.
 
-**URL**: https://lovable.dev/projects/f213e6ed-84f3-4163-8f6b-bf9a5d4160e6
+## Overview
 
-## How can I edit this code?
+This tool simplifies the process of managing multiple Supabase environments in your development workflow. It automatically generates a GitHub Actions workflow that handles the switching between your development and production Supabase environments when creating pull requests.
 
-There are several ways of editing your application.
+## Features
 
-**Use Lovable**
+- 🔄 Automatic environment switching during pull requests
+- 🔒 Secure handling of environment variables
+- 🔍 Smart detection and replacement of Supabase URLs and project IDs
+- ⚡ Browser-based workflow generation
+- 🛡️ No server-side processing - all data stays in your browser
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/f213e6ed-84f3-4163-8f6b-bf9a5d4160e6) and start prompting.
+## How It Works
 
-Changes made via Lovable will be committed automatically to this repo.
+When you create a pull request from your development branch to your production branch, the generated workflow will:
 
-**Use your preferred IDE**
+1. Search through your codebase for the development Supabase URL
+2. Replace it with your production Supabase URL
+3. Update any project IDs and anon keys automatically
+4. Commit these changes back to your pull request
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Technical Details
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- Uses GitHub Actions' powerful file manipulation capabilities
+- Searches through multiple file types (.js, .ts, .env)
+- Handles both full URLs and project IDs
+- Maintains your environment variables securely
+- Runs only on pull requests to your production branch
 
-Follow these steps:
+### ⚠️ Important Note About Database Sync
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+While this workflow helps switch between development and production environments during pull requests, it does not handle database schema or data synchronization. You'll need to manage database migrations separately using:
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+- Supabase Database Branching
+- Manual migrations
+- Other database synchronization methods
 
-# Step 3: Install the necessary dependencies.
-npm i
+This ensures your production database schema matches your development environment.
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+## Best Practices
+
+1. **Review Changes**: Always review the automated changes before merging pull requests
+2. **Branch Protection**: Keep your production branch protected
+3. **Environment Branches**: Use environment-specific branches for development
+4. **Schema Sync**: Regularly update your development environment to match production schema
+5. **Testing**: Test the workflow thoroughly in a non-production environment first
+
+## Getting Started
+
+1. Visit the tool at [URL]
+2. Enter your Supabase development and production environment details
+3. Configure your branch names
+4. Generate your workflow
+5. Copy the generated workflow to your repository's `.github/workflows` directory
+
+## Security
+
+- All processing happens in your browser
+- No data is sent to any server
+- Your credentials and environment variables never leave your device
+- The tool only generates the workflow file - you maintain full control over its implementation
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is licensed under the MIT License - see below for details:
+
+```
+MIT License
+
+Copyright (c) 2024 [Your Name]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 ```
 
-**Edit a file directly in GitHub**
+## Disclaimer
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+This tool is provided as-is without any warranties or guarantees. While it has been tested extensively, we take no responsibility for any issues that may arise from its use. Always review the generated workflow and test thoroughly before deploying to production.
 
-**Use GitHub Codespaces**
+## Support
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+For questions, updates, or more tools, follow us on [Twitter](https://twitter.com/yourusername).
 
-## What technologies are used for this project?
+## Tech Stack
 
-This project is built with .
-
-- Vite
-- TypeScript
 - React
-- shadcn-ui
+- TypeScript
 - Tailwind CSS
+- shadcn/ui
 
-## How can I deploy this project?
+---
 
-Simply open [Lovable](https://lovable.dev/projects/f213e6ed-84f3-4163-8f6b-bf9a5d4160e6) and click on Share -> Publish.
-
-## I want to use a custom domain - is that possible?
-
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+Made with ❤️ by [Your Name]
