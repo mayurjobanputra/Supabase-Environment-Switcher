@@ -37,7 +37,6 @@ const WorkflowForm: React.FC<WorkflowFormProps> = ({
   const handleDevSupabaseChange = (value: string) => {
     setDevSupabase(value);
     if (value && !validateSupabaseUrl(value)) {
-      // You might want to show an error message here
       console.error('Invalid Supabase URL format. Must be https://xxxx.supabase.co');
     }
   };
@@ -45,7 +44,6 @@ const WorkflowForm: React.FC<WorkflowFormProps> = ({
   const handleProdSupabaseChange = (value: string) => {
     setProdSupabase(value);
     if (value && !validateSupabaseUrl(value)) {
-      // You might want to show an error message here
       console.error('Invalid Supabase URL format. Must be https://xxxx.supabase.co');
     }
   };
@@ -61,15 +59,6 @@ const WorkflowForm: React.FC<WorkflowFormProps> = ({
           onChange={(e) => handleDevSupabaseChange(e.target.value)}
           className="bg-gray-900 border-gray-600 text-white placeholder:text-gray-400"
         />
-        <div className="mt-2">
-          <Label htmlFor="devProjectId" className="text-gray-400 text-sm">Project ID</Label>
-          <Input
-            id="devProjectId"
-            value={extractProjectId(devSupabase)}
-            readOnly
-            className="bg-gray-800 border-gray-700 text-gray-300 mt-1"
-          />
-        </div>
       </div>
 
       <div className="space-y-2">
@@ -81,15 +70,6 @@ const WorkflowForm: React.FC<WorkflowFormProps> = ({
           onChange={(e) => handleProdSupabaseChange(e.target.value)}
           className="bg-gray-900 border-gray-600 text-white placeholder:text-gray-400"
         />
-        <div className="mt-2">
-          <Label htmlFor="prodProjectId" className="text-gray-400 text-sm">Project ID</Label>
-          <Input
-            id="prodProjectId"
-            value={extractProjectId(prodSupabase)}
-            readOnly
-            className="bg-gray-800 border-gray-700 text-gray-300 mt-1"
-          />
-        </div>
       </div>
 
       <div className="space-y-2">
@@ -111,6 +91,26 @@ const WorkflowForm: React.FC<WorkflowFormProps> = ({
           value={prodBranch}
           onChange={(e) => setProdBranch(e.target.value)}
           className="bg-gray-900 border-gray-600 text-white placeholder:text-gray-400"
+        />
+      </div>
+
+      <div className="space-y-2">
+        <Label htmlFor="devProjectId" className="text-gray-400 text-sm">Development Project ID</Label>
+        <Input
+          id="devProjectId"
+          value={extractProjectId(devSupabase)}
+          readOnly
+          className="bg-gray-800 border-gray-700 text-gray-300 mt-1"
+        />
+      </div>
+
+      <div className="space-y-2">
+        <Label htmlFor="prodProjectId" className="text-gray-400 text-sm">Production Project ID</Label>
+        <Input
+          id="prodProjectId"
+          value={extractProjectId(prodSupabase)}
+          readOnly
+          className="bg-gray-800 border-gray-700 text-gray-300 mt-1"
         />
       </div>
     </Card>
