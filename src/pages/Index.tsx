@@ -67,6 +67,11 @@ jobs:
           done`;
   };
 
+  const scrollToHowItWorks = (e: React.MouseEvent) => {
+    e.preventDefault();
+    document.querySelector('#how-it-works')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-white p-8">
       <div className="max-w-6xl mx-auto space-y-8">
@@ -76,7 +81,10 @@ jobs:
           </h1>
           <p className="text-gray-200 max-w-2xl mx-auto">
             Generate a GitHub Actions workflow that automatically switches between development
-            and production Supabase environments during pull requests.
+            and production Supabase environments during pull requests.{' '}
+            <a href="#how-it-works" onClick={scrollToHowItWorks} className="text-blue-400 hover:text-blue-300 underline">
+              Learn more
+            </a>
           </p>
         </div>
 
@@ -123,7 +131,7 @@ jobs:
         </div>
 
         <div className="mt-16 space-y-8 text-gray-200">
-          <div className="bg-gray-800/50 rounded-lg p-8 space-y-4">
+          <div id="how-it-works" className="bg-gray-800/50 rounded-lg p-8 space-y-4">
             <h2 className="text-2xl font-semibold text-white">How It Works</h2>
             <div className="space-y-4">
               <p>
