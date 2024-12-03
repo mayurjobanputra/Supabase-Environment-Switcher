@@ -102,7 +102,7 @@ This tool is provided as-is without any warranties or guarantees. While it has b
 
 ## Support
 
-For questions, updates, or more tools, follow me on [Twitter](https://mayur.ca/x).
+For questions, updates, or more tools, follow me on <a href="https://mayur.ca/x" target="_blank" rel="noopener noreferrer">Twitter</a>.
 
 ## Tech Stack
 
@@ -113,4 +113,4 @@ For questions, updates, or more tools, follow me on [Twitter](https://mayur.ca/x
 
 ---
 
-Made with ❤️ by Mayur ([mayur.ca/x](https://mayur.ca/x))
+Made with ❤️ by Mayur (<a href="https://mayur.ca/x" target="_blank" rel="noopener noreferrer">mayur.ca/x</a>)
