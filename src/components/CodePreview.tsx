@@ -21,12 +21,12 @@ const CodePreview: React.FC<CodePreviewProps> = ({ code }) => {
       <Button
         variant="outline"
         size="icon"
-        className="absolute top-4 right-4 hover:bg-gray-700"
+        className="absolute top-4 right-4 text-white hover:bg-gray-700"
         onClick={handleCopy}
       >
         <Copy className="h-4 w-4" />
       </Button>
-      <pre className="font-mono text-sm text-editor-text overflow-x-auto">
+      <pre className="font-mono text-sm text-white overflow-x-auto">
         <code>{code}</code>
       </pre>
     </div>
