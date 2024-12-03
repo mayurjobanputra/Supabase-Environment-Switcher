@@ -143,11 +143,38 @@ jobs:
               <ul className="list-disc list-inside space-y-2 ml-4">
                 <li>Search through your codebase for the development Supabase URL</li>
                 <li>Replace it with your production Supabase URL</li>
+                <li>Update any project IDs and anon keys automatically</li>
                 <li>Commit these changes back to your pull request</li>
               </ul>
-              <p>
-                This automation ensures that your application seamlessly transitions between development and production environments without manual intervention.
-              </p>
+              <div className="mt-6">
+                <h3 className="text-xl font-semibold mb-2">Technical Details</h3>
+                <ul className="list-disc list-inside space-y-2 ml-4">
+                  <li>Uses GitHub Actions' powerful file manipulation capabilities</li>
+                  <li>Searches through multiple file types (.js, .ts, .env)</li>
+                  <li>Handles both full URLs and project IDs</li>
+                  <li>Maintains your environment variables securely</li>
+                  <li>Runs only on pull requests to your production branch</li>
+                </ul>
+              </div>
+              <div className="mt-6">
+                <h3 className="text-xl font-semibold mb-2">Best Practices</h3>
+                <ul className="list-disc list-inside space-y-2 ml-4">
+                  <li>Always review the changes before merging the pull request</li>
+                  <li>Keep your production branch protected</li>
+                  <li>Use environment-specific branches for development</li>
+                  <li>Regularly update your development environment to match production schema</li>
+                </ul>
+              </div>
+              <div className="mt-8 border-t border-gray-700 pt-6">
+                <h3 className="text-xl font-semibold mb-2 text-yellow-400">Disclaimer</h3>
+                <p className="text-sm text-gray-400">
+                  This tool is provided as-is without any warranties or guarantees. While it has been tested extensively, 
+                  I take no responsibility for any issues that may arise from its use. Always review the generated workflow 
+                  and test thoroughly before deploying to production. For questions, updates, or more tools, 
+                  follow me on <a href="https://mayur.ca/x" target="_blank" rel="noopener noreferrer" 
+                  className="text-blue-400 hover:text-blue-300">Twitter</a>.
+                </p>
+              </div>
             </div>
           </div>
         </div>
