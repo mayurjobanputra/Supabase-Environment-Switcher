@@ -117,6 +117,9 @@ jobs:
 
           <div>
             <h2 className="text-xl font-semibold mb-4 text-white">Generated Workflow</h2>
+            <p className="text-gray-300 mb-4">
+              The workflow below is generated entirely in your browser using JavaScript - no server calls are made and your credentials never leave your device.
+            </p>
             {isFormEmpty() ? (
               <div className="text-green-500 mb-4 p-4 border border-green-500 rounded bg-green-500/10">
                 Fill in the form to generate your GitHub Actions workflow.
