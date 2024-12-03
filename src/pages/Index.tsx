@@ -134,31 +134,42 @@ jobs:
         </div>
 
         <div className="mt-16 space-y-8">
-          <div id="how-it-works" className="bg-card rounded-lg p-8 space-y-4">
-            <h2 className="text-2xl font-semibold text-foreground">How It Works</h2>
-            <div className="space-y-4 text-foreground/80">
-              <p>
-                This tool generates a GitHub Actions workflow that automatically handles the switching between your development and production Supabase environments when creating pull requests.
+
+        <div id="how-it-works" className="bg-card rounded-lg p-8 space-y-4">
+          <h2 className="text-2xl font-semibold text-foreground">How It Works</h2>
+          <div className="space-y-4 text-foreground/80">
+            <p>
+              This tool generates a GitHub Actions workflow that automatically handles the switching between your development and production Supabase environments when creating pull requests.
+            </p>
+            <p>
+              When you create a pull request from your development branch to your production branch, the generated workflow will:
+            </p>
+            <ul className="list-disc list-inside space-y-2 ml-4">
+              <li>Search through your codebase for the development Supabase URL</li>
+              <li>Replace it with your production Supabase URL</li>
+              <li>Update any project IDs and anon keys automatically</li>
+              <li>Commit these changes back to your pull request</li>
+            </ul>
+            <div className="mt-6 p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
+              <h3 className="text-lg font-semibold mb-2 text-yellow-500">Important Note About Database Sync</h3>
+              <p className="text-sm">
+                While this workflow helps switch between development and production environments during pull requests, 
+                it does not handle database schema or data synchronization. You'll need to manage database migrations 
+                separately using tools like Supabase Database Branching, manual migrations, or other database 
+                synchronization methods to ensure your production database schema matches your development environment.
               </p>
-              <p>
-                When you create a pull request from your development branch to your production branch, the generated workflow will:
-              </p>
+            </div>
+            <div className="mt-6">
+              <h3 className="text-xl font-semibold mb-2">Technical Details</h3>
               <ul className="list-disc list-inside space-y-2 ml-4">
-                <li>Search through your codebase for the development Supabase URL</li>
-                <li>Replace it with your production Supabase URL</li>
-                <li>Update any project IDs and anon keys automatically</li>
-                <li>Commit these changes back to your pull request</li>
+                <li>Uses GitHub Actions' powerful file manipulation capabilities</li>
+                <li>Searches through multiple file types (.js, .ts, .env)</li>
+                <li>Handles both full URLs and project IDs</li>
+                <li>Maintains your environment variables securely</li>
+                <li>Runs only on pull requests to your production branch</li>
               </ul>
-              <div className="mt-6">
-                <h3 className="text-xl font-semibold mb-2">Technical Details</h3>
-                <ul className="list-disc list-inside space-y-2 ml-4">
-                  <li>Uses GitHub Actions' powerful file manipulation capabilities</li>
-                  <li>Searches through multiple file types (.js, .ts, .env)</li>
-                  <li>Handles both full URLs and project IDs</li>
-                  <li>Maintains your environment variables securely</li>
-                  <li>Runs only on pull requests to your production branch</li>
-                </ul>
-              </div>
+            </div>
+
               <div className="mt-6">
                 <h3 className="text-xl font-semibold mb-2">Best Practices</h3>
                 <ul className="list-disc list-inside space-y-2 ml-4">
@@ -181,9 +192,12 @@ jobs:
             </div>
           </div>
         </div>
+
+        </div>
       </div>
     </div>
   );
 };
 
 export default Index;
+
