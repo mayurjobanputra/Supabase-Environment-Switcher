@@ -28,6 +28,10 @@ const Index = () => {
     );
   };
 
+  const isFormEmpty = () => {
+    return !devSupabase && !prodSupabase && !devAnonKey && !prodAnonKey;
+  };
+
   const generateWorkflow = () => {
     if (hasValidationErrors()) {
       return '';
@@ -105,11 +109,15 @@ jobs:
 
           <div>
             <h2 className="text-xl font-semibold mb-4 text-white">Generated Workflow</h2>
-            {hasValidationErrors() && (
+            {isFormEmpty() ? (
+              <div className="text-green-500 mb-4 p-4 border border-green-500 rounded bg-green-500/10">
+                Fill in the form to generate your GitHub Actions workflow.
+              </div>
+            ) : hasValidationErrors() ? (
               <div className="text-red-500 mb-4 p-4 border border-red-500 rounded bg-red-500/10">
                 Please fix the validation errors in the form before generating the workflow.
               </div>
-            )}
+            ) : null}
             <CodePreview code={generateWorkflow()} />
           </div>
         </div>
