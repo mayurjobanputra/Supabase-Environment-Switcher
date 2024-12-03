@@ -46,17 +46,14 @@ const WorkflowForm: React.FC<WorkflowFormProps> = ({
 
   const handleDevSupabaseChange = (value: string) => {
     setDevSupabase(value);
-    if (value && !validateSupabaseUrl(value)) {
-      console.error('Invalid Supabase URL format. Must be https://xxxx.supabase.co');
-    }
   };
 
   const handleProdSupabaseChange = (value: string) => {
     setProdSupabase(value);
-    if (value && !validateSupabaseUrl(value)) {
-      console.error('Invalid Supabase URL format. Must be https://xxxx.supabase.co');
-    }
   };
+
+  const isDevUrlValid = !devSupabase || validateSupabaseUrl(devSupabase);
+  const isProdUrlValid = !prodSupabase || validateSupabaseUrl(prodSupabase);
 
   return (
     <Card className="p-6 space-y-8 animate-fade-in bg-gray-800/50 border-gray-700">
@@ -71,7 +68,7 @@ const WorkflowForm: React.FC<WorkflowFormProps> = ({
             placeholder="https://your-dev-project.supabase.co"
             value={devSupabase}
             onChange={(e) => handleDevSupabaseChange(e.target.value)}
-            className="bg-gray-900 border-gray-600 text-white placeholder:text-gray-400"
+            className={`bg-gray-900 border-gray-600 text-white placeholder:text-gray-400 ${!isDevUrlValid ? 'border-red-500 focus-visible:ring-red-500' : ''}`}
           />
         </div>
 
@@ -121,7 +118,7 @@ const WorkflowForm: React.FC<WorkflowFormProps> = ({
             placeholder="https://your-prod-project.supabase.co"
             value={prodSupabase}
             onChange={(e) => handleProdSupabaseChange(e.target.value)}
-            className="bg-gray-900 border-gray-600 text-white placeholder:text-gray-400"
+            className={`bg-gray-900 border-gray-600 text-white placeholder:text-gray-400 ${!isProdUrlValid ? 'border-red-500 focus-visible:ring-red-500' : ''}`}
           />
         </div>
 
