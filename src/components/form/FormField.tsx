@@ -35,12 +35,12 @@ export const FormField: React.FC<FormFieldProps> = ({
   return (
     <div className="space-y-2">
       <div className="flex items-center gap-2">
-        <Label htmlFor={id} className="text-gray-200">{label}</Label>
+        <Label htmlFor={id} className="text-foreground dark:text-gray-200">{label}</Label>
         {tooltip && (
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger>
-                <HelpCircle className="h-4 w-4 text-gray-400" />
+                <HelpCircle className="h-4 w-4 text-muted-foreground dark:text-gray-400" />
               </TooltipTrigger>
               <TooltipContent>
                 <p>{tooltip}</p>
@@ -57,7 +57,7 @@ export const FormField: React.FC<FormFieldProps> = ({
         placeholder={placeholder}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className={`bg-gray-900 border-gray-600 text-white placeholder:text-gray-400 ${
+        className={`bg-background dark:bg-gray-900 border-input dark:border-gray-600 text-foreground dark:text-white placeholder:text-muted-foreground dark:placeholder:text-gray-400 ${
           isMonospace ? 'font-mono text-sm' : ''
         } ${!isValid ? 'border-red-500 focus-visible:ring-red-500' : ''}`}
       />

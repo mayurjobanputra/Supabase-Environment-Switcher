@@ -32,7 +32,7 @@ const WorkflowForm: React.FC<WorkflowFormProps> = ({
   setProdAnonKey,
 }) => {
   return (
-    <Card className="p-6 space-y-8 animate-fade-in bg-gray-800/50 border-gray-700">
+    <Card className="p-6 space-y-8 animate-fade-in bg-card dark:bg-gray-800/50 border-input dark:border-gray-700">
       <EnvironmentSection
         title="Development Environment"
         supabaseUrl={devSupabase}
