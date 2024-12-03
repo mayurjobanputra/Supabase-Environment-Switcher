@@ -33,7 +33,7 @@ const Index = () => {
   };
 
   const generateWorkflow = () => {
-    if (hasValidationErrors()) {
+    if (isFormEmpty() || hasValidationErrors() || !devSupabase || !prodSupabase || !devBranch || !prodBranch || !devAnonKey || !prodAnonKey) {
       return '';
     }
 
