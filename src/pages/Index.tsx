@@ -3,6 +3,7 @@ import WorkflowForm from '@/components/WorkflowForm';
 import CodePreview from '@/components/CodePreview';
 import { Button } from '@/components/ui/button';
 import { validateSupabaseUrl, validateBranchName, validateAnonKey } from '@/utils/formValidation';
+import { Github } from 'lucide-react';
 
 const Index = () => {
   const [devSupabase, setDevSupabase] = useState('');
@@ -75,7 +76,16 @@ jobs:
   return (
     <div className="min-h-screen bg-background text-foreground">
       <div className="max-w-6xl mx-auto space-y-8 p-8">
-        <div className="text-center space-y-4">
+        <div className="text-center space-y-4 relative">
+          <a
+            href="https://github.com/mayurjobanputra/Supabase-Environment-Switcher"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="absolute right-0 top-0 text-foreground/80 hover:text-foreground transition-colors"
+            aria-label="View on GitHub"
+          >
+            <Github className="w-6 h-6" />
+          </a>
           <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-400">
             Supabase Environment Switcher
           </h1>
